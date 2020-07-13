@@ -1,0 +1,5 @@
+<div>
+  <%= link_to @game.title,'#', class: 'btn btn-warning' %>
+  <%= link_to "戻る", root_path, class: 'btn btn-secondary' %>
+  <%= link_to "削除", game_path(@game), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: 'btn btn-danger' %>
+</div>
