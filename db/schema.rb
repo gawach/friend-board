@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_120915) do
+ActiveRecord::Schema.define(version: 2020_07_13_144418) do
 
   create_table "boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "target_rank"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2020_07_13_120915) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "game_id"
+    t.index ["game_id"], name: "index_boards_on_game_id"
   end
 
   create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -26,4 +28,14 @@ ActiveRecord::Schema.define(version: 2020_07_13_120915) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.text "introduce"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "boards", "games"
 end
