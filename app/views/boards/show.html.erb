@@ -1,2 +1,11 @@
-<h1>Boards#show</h1>
-<p>Find me in app/views/boards/show.html.erb</p>
+<div class="">
+  <div class="">
+    <ul class="list-unstyled">
+      <li><%= @board.game.title %></li>
+      <li>目標ランク：<%= @board.target_rank %></li>
+      <li>募集人数：<%= @board.recruit_number %>人</li>
+      <li>その他：<%= @board.content %></li>
+    </ul>
+    <%= link_to '削除', game_board_path(@board), method: :delete %>
+  </div>
+</div>

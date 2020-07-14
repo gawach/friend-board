@@ -1,2 +1,24 @@
-<h1>Boards#new</h1>
-<p>Find me in app/views/boards/new.html.erb</p>
+<%= @game.title %>
+<%= form_with(model: [@game, @board], url: game_boards_path, local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  
+  <div class="form-group">
+    <%= f.label :target_rank, '目標ランク' %>
+    <%= f.text_field :target_rank, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :recruit_number, '募集人数' %>
+    <%= f.number_field :recruit_number, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, '補足' %>
+    <%= f.text_area :content, class: 'form-control'%>
+  </div>
+  
+  <%= f.hidden_field :game_id, value: params[:game_id] %>
+  
+  <%= f.submit '作成', class: 'btn btn-primary btn-block' %>
+<% end %>
+<div>
+  <%= link_to '戻る', root_url, class: 'btn btn-secondary' %>
+</div>
