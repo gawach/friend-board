@@ -9,16 +9,16 @@
     <%= link_to '新規投稿', new_game_board_path, class: 'btn btn-success' %>
   </div>
   <div>
-    <ul>
-      <% @boards.each do |board| %>
+    <% @boards.each do |board| %>
+      <ul class="list-unstyled">
         <% if params[:game_id].to_i == board.game_id %>
-          <li class="list-unstyled">
+          <li>到達目標：
             <%= link_to board.target_rank, game_board_path(params[:game_id], board) %>
-            <%= board.recruit_number %>
-            <%= board.content %>
           </li>
+          <li>募集人数：<%= board.recruit_number %>人</li>
+          <li>その他：<%= board.content %></li>
         <% end %>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
   </div>
 </div>
