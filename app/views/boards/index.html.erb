@@ -12,6 +12,10 @@
     <% @boards.each do |board| %>
       <ul class="list-unstyled">
         <% if params[:game_id].to_i == board.game_id %>
+          <li>
+            <img src="<%= gravatar_url(board.user, { size: 50 }) %>">
+            <%= board.user.name %>
+          </li>
           <li>到達目標：
             <%= link_to board.target_rank, game_board_path(params[:game_id], board) %>
           </li>

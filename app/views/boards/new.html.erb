@@ -16,6 +16,7 @@
   </div>
   
   <%= f.hidden_field :game_id, value: params[:game_id] %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   
   <%= f.submit '作成', class: 'btn btn-primary btn-block' %>
 <% end %>

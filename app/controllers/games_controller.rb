@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:destroy]
+  before_action :require_user_logged_in, only: [:new, :create, :destroy]
   
   def index
     @games = Game.all

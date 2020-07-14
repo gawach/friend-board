@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :destroy]
+  before_action :require_user_logged_in, only: [:show, :new, :create, :destroy]
   
   def index
     @boards = Board.all
@@ -32,7 +33,7 @@ class BoardsController < ApplicationController
   def destroy
     @board.destroy
     flash[:success] = '投稿が削除されました'
-    redirect_to game_boards_path
+    redirect_back(fallback_location: root_path)
   end
   
   
@@ -43,6 +44,6 @@ class BoardsController < ApplicationController
     end
     
     def board_params
-      params.require(:board).permit(:target_rank, :recruit_number, :content, :game_id)
+      params.require(:board).permit(:target_rank, :recruit_number, :content, :game_id, :user_id)
     end
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  join_id: one
+  board_id: one
+
+two:
+  user: two
+  join_id: two
+  board_id: two
