@@ -1,0 +1,8 @@
+<%= link_to 'ホーム', root_url %>
+<% if logged_in? %>
+  <h1><%= current_user.name %></h1>
+  <%= link_to 'ログアウト', logout_path, method: :delete %>
+<% else %>
+  <%= link_to 'ユーザー登録', signup_path %>
+  <%= link_to 'ログイン', login_path %>
+<% end %>
