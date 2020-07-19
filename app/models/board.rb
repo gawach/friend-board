@@ -5,4 +5,7 @@ class Board < ApplicationRecord
   validates :target_rank, presence: true
   validates :recruit_number, presence: true
   validates :content, length: { maximum: 255 }
+  
+  has_many :parties
+  
 end

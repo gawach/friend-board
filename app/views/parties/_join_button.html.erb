@@ -1,0 +1,13 @@
+<% if logged_in? %>
+  <% if current_user.joining?(board) %>
+    <%= form_with(model: current_user.parties.find_by(board_id: board.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :board_id, board.id %>
+      <%= f.submit 'Leave.', class: 'btn btn-danger' %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.parties.build, local: true) do |f| %>
+      <%= hidden_field_tag :board_id, board.id %>
+      <%= f.submit 'Join!', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+<% end %>

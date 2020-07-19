@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'parties/create'
+  get 'parties/destroy'
   root to: 'games#index'
   
   resources :games, only: [:new, :create, :show, :destroy] do
@@ -12,5 +14,7 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   resources :users, only: [:index, :show, :create]
+  
+  resources :parties, only: [:create, :destroy]
   
 end

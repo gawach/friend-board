@@ -5,6 +5,7 @@
       <li>目標ランク：<%= @board.target_rank %></li>
       <li>募集人数：<%= @board.recruit_number %>人</li>
       <li>その他：<%= @board.content %></li>
+      <li><%= render 'parties/join_button', board: @board %></li>
     </ul>
     <%= link_to '削除', game_board_path(@board), method: :delete %>
   </div>
