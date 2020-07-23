@@ -10,6 +10,9 @@
       <li>エンジョイ勢？：<%= @profile.enjoy == "1" ? "YES!" : "ガチ勢"  %></li>
     </ul>
   </div>
+  <div>
+    <%= link_to 'プロフィール編集', edit_user_profile_path(@profile) %>
+    <%= link_to 'プロフィール削除', user_profile_path(@profile), method: :delete %>
+  </div>
   <%= link_to 'プロフィール一覧', user_profiles_path %>
-  <%= link_to 'プロフィール削除', user_profile_path(@profile), method: :delete %>
 </div>

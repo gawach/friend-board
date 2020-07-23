@@ -1,9 +1,0 @@
-<div class="">
-  <div class="">
-    <ul class="list-unstyled">
-      <% @profiles.each do |profile| %>
-        <li><%= link_to profile.game_title, user_profile_path(current_user, profile) %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>

@@ -1,5 +1,5 @@
-<h3>プロフィール作成</h3>
-<%= form_with(model: [current_user, @profile], url: user_profiles_path, local: true) do |f| %>
+<h3>プロフィール編集</h3>
+<%= form_with(model: [current_user, @profile], url: user_profile_path(@profile), local: true) do |f| %>
   <div class="form-group">
     <%= f.label :game_title, 'ゲームタイトル' %>
     <%= f.text_field :game_title, class: 'form-control' %>
@@ -30,5 +30,5 @@
   </div>
   
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
+  <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
 <% end %>

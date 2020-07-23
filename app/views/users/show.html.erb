@@ -2,16 +2,19 @@
   <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 100 }) %>" alt="">
 </div>
 <div>
-  <% if current_user.id == params[:user_id] %>
-    <%= link_to 'ゲームプロフィール作成', new_user_profile_path(@user) %>
+  <% if current_user.id == params[:id].to_i %>
+    <%= link_to 'ゲームプロフィール作成', new_user_profile_path(@user), class: 'btn btn-success' %>
   <% end %>
 </div>
 <div>
   <ul class="list-unstyled">
     <% @user.profiles.each do |profile| %>
-      <li>
-        <%= link_to profile.game_title, user_profile_path(@user) %>
-      </li>
+      <% if profile.user_id == current_user.id %>
+        <li>
+          <%= link_to profile.game_title, user_profile_path(@user, profile) %>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
+

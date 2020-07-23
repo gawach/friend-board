@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   resources :users, only: [:index, :show, :create] do
-    resources :profiles, only: [:index, :show, :new, :create, :destroy]
+    resources :profiles, only: [:show, :new, :create, :edit, :update, :destroy]
   end
   
   resources :parties, only: [:create, :destroy]

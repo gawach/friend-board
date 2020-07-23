@@ -1,16 +1,16 @@
 class ProfilesController < ApplicationController
   before_action :require_user_logged_in
-  before_action :set_profile, only: [:show, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   
   def index
     @profiles = Profile.all
   end
   
-  def show
-  end
-  
   def new
     @profile = Profile.new
+  end
+  
+  def show
   end
   
   def create
@@ -22,6 +22,19 @@ class ProfilesController < ApplicationController
     else
       flash.now[:danger] = 'プロフィールの作成に失敗しました'
       render :new
+    end
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @profile.update(profile_params)
+      flash[:success] = 'プロフィールが更新されました'
+      redirect_to user_path(current_user)
+    else
+      flash.now[:danger] = 'プロフィールの更新に失敗しました'
+      render :edit
     end
   end
   
