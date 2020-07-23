@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :boards
   has_many :parties, foreign_key: :join_id
   has_many :joinings, through: :parties, source: :board
+  has_many :profiles
   
   
   def join(board)

@@ -1,0 +1,33 @@
+<%= form_with(model: [current_user, @profile], url: user_profiles_path, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :game_title, 'ゲームタイトル' %>
+    <%= f.text_field :game_title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :online_code, 'オンラインコード' %>
+    <%= f.text_field :online_code, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :current_rank, '現在のランク' %>
+    <%= f.text_field :current_rank, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :best_rank, '過去最高到達ランク' %>
+    <%= f.text_field :best_rank, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :favorite_character, 'お気に入りのキャラクター' %>
+    <%= f.text_field :favorite_character, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :frequency, 'IN頻度' %>
+    <%= f.text_field :frequency, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :enjoy, 'エンジョイ勢' %>
+    <%= f.check_box :enjoy, class: 'form-control' %>
+  </div>
+  
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
+<% end %>

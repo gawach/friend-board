@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'parties/create'
-  get 'parties/destroy'
   root to: 'games#index'
   
   resources :games, only: [:new, :create, :show, :destroy] do
@@ -13,7 +11,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :create]
+  resources :users, only: [:index, :show, :create] do
+    resources :profiles, only: [:index, :show, :new, :create, :destroy]
+  end
   
   resources :parties, only: [:create, :destroy]
   

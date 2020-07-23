@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :require_user_logged_in, only: [:destroy]
-  
   def new
   end
   
@@ -24,6 +22,7 @@ class SessionsController < ApplicationController
   end
   
   private
+  
     def login(email, password)
       @user = User.find_by(email: email)
       

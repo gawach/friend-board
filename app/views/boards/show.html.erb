@@ -7,6 +7,14 @@
       <li>その他：<%= @board.content %></li>
       <li><%= render 'parties/join_button', board: @board %></li>
     </ul>
+    
+    <h3>参加者一覧</h3>
+    <ul class="list-unstyled">
+      <% @board.joiners.each do |joiner| %>
+        <img src="<%= gravatar_url(joiner, { size: 30 }) %>", alt="">
+        <li><%= link_to joiner.name, user_path(joiner) %></li>
+      <% end %>
+    </ul>
     <%= link_to '削除', game_board_path(@board), method: :delete %>
   </div>
 </div>

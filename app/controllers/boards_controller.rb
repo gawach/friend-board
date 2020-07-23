@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
       redirect_to game_boards_path
     else
       flash.now[:danger] = '投稿されませんでした'
-      render 'boards/new'
+      render :new
     end
   end
 
@@ -33,7 +33,7 @@ class BoardsController < ApplicationController
   def destroy
     @board.destroy
     flash[:success] = '投稿が削除されました'
-    redirect_back(fallback_location: root_path)
+    redirect_to game_boards_path
   end
   
   

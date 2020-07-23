@@ -1,0 +1,15 @@
+<div class="">
+  <div class="">
+    <ul class="list-unstyled">
+      <li><%= @profile.game_title %></li>
+      <li>オンラインID：<%= @profile.online_code %></li>
+      <li>現在のランク：<%= @profile.current_rank %>人</li>
+      <li>過去最高到達ランク：<%= @profile.best_rank %></li>
+      <li>お気に入りのキャラクター：<%= @profile.favorite_character %></li>
+      <li>IN頻度：<%= @profile.frequency %></li>
+      <li>エンジョイ勢？：<%= @profile.enjoy == "1" ? "YES!" : "ガチ勢"  %></li>
+    </ul>
+  </div>
+  <%= link_to 'プロフィール一覧', user_profiles_path %>
+  <%= link_to 'プロフィール削除', user_profile_path(@profile), method: :delete %>
+</div>

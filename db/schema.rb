@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_085419) do
+ActiveRecord::Schema.define(version: 2020_07_21_081953) do
 
   create_table "boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "target_rank"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(version: 2020_07_19_085419) do
     t.index ["join_id"], name: "index_parties_on_user_id_and_join_id", unique: true
   end
 
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "online_code"
+    t.string "current_rank"
+    t.string "best_rank"
+    t.string "frequency"
+    t.string "enjoy"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "game_title"
+    t.string "favorite_character"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -53,4 +67,5 @@ ActiveRecord::Schema.define(version: 2020_07_19_085419) do
   add_foreign_key "boards", "users"
   add_foreign_key "parties", "boards"
   add_foreign_key "parties", "users", column: "join_id"
+  add_foreign_key "profiles", "users"
 end

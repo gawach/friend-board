@@ -7,5 +7,6 @@ class Board < ApplicationRecord
   validates :content, length: { maximum: 255 }
   
   has_many :parties
+  has_many :joiners, through: :parties, source: :join
   
 end
