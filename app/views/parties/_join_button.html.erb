@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if logged_in? && current_user.id != board.user.id %>
   <% if current_user.joining?(board) %>
     <%= form_with(model: current_user.parties.find_by(board_id: board.id), local: true, method: :delete) do |f| %>
       <%= hidden_field_tag :board_id, board.id %>
