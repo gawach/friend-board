@@ -1,4 +1,6 @@
 <%= form_with(model: @game,local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  
   <div class="form-group">
     <%= f.label :title, 'ゲームタイトル入力' %>
     <%= f.text_area :title, class: 'form-control'%>

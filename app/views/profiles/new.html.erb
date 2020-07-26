@@ -1,5 +1,7 @@
 <h3>プロフィール作成</h3>
 <%= form_with(model: [current_user, @profile], url: user_profiles_path, local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  
   <div class="form-group">
     <%= f.label :game_title, 'ゲームタイトル' %>
     <%= f.text_field :game_title, class: 'form-control' %>
