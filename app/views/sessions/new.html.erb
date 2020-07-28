@@ -3,7 +3,6 @@
  </div>
  
  <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
   
   <div class="form-group">
     <%= f.label :email, 'Email' %>

@@ -1,18 +1,22 @@
 <div class="">
   <div class="">
-    <ul class="list-unstyled">
-      <li><%= @profile.game_title %></li>
-      <li>オンラインID：<%= @profile.online_code %></li>
-      <li>現在のランク：<%= @profile.current_rank %>人</li>
-      <li>過去最高到達ランク：<%= @profile.best_rank %></li>
-      <li>お気に入りのキャラクター：<%= @profile.favorite_character %></li>
-      <li>IN頻度：<%= @profile.frequency %></li>
-      <li>エンジョイ勢？：<%= @profile.enjoy == "1" ? "YES!" : "ガチ勢"  %></li>
+    <ul class="card list-unstyled">
+      <li class="card-header">
+        <div class="card-title"><%= @profile.game_title %></div>
+      </li>
+      <li class="card-body">
+        <div>オンラインID：<%= @profile.online_code %></div>
+        <div>現在のランク：<%= @profile.current_rank %>人</div>
+        <div>過去最高到達ランク：<%= @profile.best_rank %></div>
+        <div>お気に入りのキャラクター：<%= @profile.favorite_character %></div>
+        <div>IN頻度：<%= @profile.frequency %></div>
+        <div>エンジョイ勢？：<%= @profile.enjoy == "1" ? "YES!" : "ガチ勢"  %></div>
+      </li>
     </ul>
   </div>
   <div>
-    <%= link_to 'プロフィール編集', edit_user_profile_path(@profile) %>
-    <%= link_to 'プロフィール削除', user_profile_path(@profile), method: :delete %>
+    <%= link_to 'プロフィール編集', edit_user_profile_path(@profile), class: 'btn btn-info col-sm-2' %>
+    <%= link_to 'プロフィール削除', user_profile_path(@profile), method: :delete, class: 'btn btn-danger col-sm-2' %>
+    <%= link_to 'プロフィール一覧へ', user_path(@profile.user_id), class: 'btn btn-secondary col-sm-2 ml-5' %>
   </div>
-  <%= link_to 'プロフィール一覧', user_profiles_path %>
 </div>

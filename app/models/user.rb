@@ -6,10 +6,10 @@ class User < ApplicationRecord
                                     uniqueness: { case_sensitive: false }
   has_secure_password
   
-  has_many :boards
-  has_many :parties, foreign_key: :join_id
+  has_many :boards, dependent: :destroy
+  has_many :parties, foreign_key: :join_id, dependent: :destroy
   has_many :joinings, through: :parties, source: :board
-  has_many :profiles
+  has_many :profiles, dependent: :destroy
   
   
   def join(board)

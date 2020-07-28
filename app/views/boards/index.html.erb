@@ -1,28 +1,30 @@
-<div class="row">
-  <div>
+<div class="container">
+  <div class="text-center">
     <%= link_to @game.title, root_url, class: 'btn btn-secondary' %>
   </div>
-  <div>
+  <div class="text-right">
     <%= link_to "タイトルの削除", game_path(params[:game_id]), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: 'btn btn-danger' %>
   </div>
   <div>
     <%= link_to '新規投稿', new_game_board_path, class: 'btn btn-success' %>
   </div>
-  <div>
+  <div class="mx-auto">
     <% @boards.each do |board| %>
-      <ul class="list-unstyled">
-        <% if params[:game_id].to_i == board.game_id %>
-          <li>
-            <img src="<%= gravatar_url(board.user, { size: 50 }) %>">
-            <%= board.user.name %>
-          </li>
-          <li>到達目標：
-            <%= link_to board.target_rank, game_board_path(params[:game_id], board) %>
-          </li>
-          <li>募集人数：<%= board.recruit_number %>人</li>
-          <li>その他：<%= board.content %></li>
-        <% end %>
-      </ul>
+      <% if params[:game_id].to_i == board.game_id %>
+        <ul class="list-unstyled text-left card">
+            <li class="card-header">
+              <img src="<%= gravatar_url(board.user, { size: 50 }) %>">
+              <%= board.user.name %>
+            </li>
+            <li class="card-body">
+              <div>
+              到達目標：<%= link_to board.target_rank, game_board_path(params[:game_id], board) %>
+              </div>
+              <div>募集人数：<%= board.recruit_number %>人</p>
+              <div>その他：<%= board.content %></div>
+            </li>
+        </ul>
+      <% end %>
     <% end %>
   </div>
 </div>

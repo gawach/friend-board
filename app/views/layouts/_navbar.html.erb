@@ -1,9 +1,34 @@
-<%= link_to 'ゲームタイトルへ', root_url %>
-<% if logged_in? %>
-  <%= link_to current_user.name, user_path(current_user) %>
-  <%= link_to 'ユーザー一覧', users_path %>
-  <%= link_to 'ログアウト', logout_path, method: :delete %>
-<% else %>
-  <%= link_to 'ユーザー登録', signup_path %>
-  <%= link_to 'ログイン', login_path %>
-<% end %>
+<header class="mb-4">
+  <nav class="navbar navbar-expand-sm bg-dark">
+    <p class="navbar-brand text-white">フレンド募集掲示板</p>
+    
+    <div class="navbar nav-item">
+      <% apex = Game.find_by(id: 1) %>
+      <%= link_to 'Apex Legends', game_boards_path(apex) %>
+    </div>
+    <div class="navbar nav-item">
+      <% r6s = Game.find_by(id: 4) %>
+      <%= link_to 'Rainbow Six Siege', game_boards_path(r6s) %>
+    </div>
+    
+    <div class="navbar nav-item collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <% if logged_in? %>
+          <li class="nav-item dropdown">
+              <div class="nav-link dropdown-toggle text-white", data-toggle="dropdown">
+                <%= current_user.name %>
+              </div>
+              <div class="dropdown-menu dropdown-menu-right">
+                <%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %>
+                <%= link_to 'ユーザー一覧', users_path, class: 'dropdown-item' %>
+                <%= link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item' %>
+              </div>
+          </li>
+        <% else %>
+          <li class="nav-item nav-link"><%= link_to 'ユーザー登録', signup_path %></li>
+          <li class="nav-item nav-link"><%= link_to 'ログイン', login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
