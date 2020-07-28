@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_081953) do
+ActiveRecord::Schema.define(version: 2020_07_28_102621) do
 
   create_table "boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "target_rank"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_081953) do
     t.text "introduce"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "boards", "games"

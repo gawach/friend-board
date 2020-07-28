@@ -1,28 +1,32 @@
 <header class="mb-4">
   <nav class="navbar navbar-expand-sm bg-dark">
-    <p class="navbar-brand text-white">フレンド募集掲示板</p>
-    
-    <div class="navbar nav-item">
-      <% apex = Game.find_by(id: 1) %>
-      <%= link_to 'Apex Legends', game_boards_path(apex) %>
-    </div>
-    <div class="navbar nav-item">
-      <% r6s = Game.find_by(id: 4) %>
-      <%= link_to 'Rainbow Six Siege', game_boards_path(r6s) %>
+    <p class="navbar-brand text-white my-auto">フレンド募集掲示板</p>
+    <div class="navbar my-auto">
+      <%= link_to 'ホームへ', root_url, class: 'nav-link text-white' %>
     </div>
     
     <div class="navbar nav-item collapse navbar-collapse justify-content-end">
+      <div class="navbar nav-item dropdown">
+        <div class="nav-link dropdown-toggle text-white", data-toggle="dropdown">ゲームタイトル一覧</div>
+        <div class="dropdown-menu">
+          <% apex = Game.find_by(id: 1) %>
+          <%= link_to 'Apex Legends', game_boards_path(apex), class: 'dropdown-item' %>
+          <% r6s = Game.find_by(id: 4) %>
+          <%= link_to 'Rainbow Six Siege', game_boards_path(r6s), class: 'dropdown-item' %>
+        </div>
+      </div>
+    
       <ul class="navbar-nav">
         <% if logged_in? %>
           <li class="nav-item dropdown">
-              <div class="nav-link dropdown-toggle text-white", data-toggle="dropdown">
-                <%= current_user.name %>
-              </div>
-              <div class="dropdown-menu dropdown-menu-right">
-                <%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %>
-                <%= link_to 'ユーザー一覧', users_path, class: 'dropdown-item' %>
-                <%= link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item' %>
-              </div>
+            <div class="nav-link dropdown-toggle text-white", data-toggle="dropdown">
+              <%= current_user.name %>
+            </div>
+            <div class="dropdown-menu dropdown-menu-right">
+              <%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %>
+              <%= link_to 'ユーザー一覧', users_path, class: 'dropdown-item' %>
+              <%= link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item' %>
+            </div>
           </li>
         <% else %>
           <li class="nav-item nav-link"><%= link_to 'ユーザー登録', signup_path %></li>

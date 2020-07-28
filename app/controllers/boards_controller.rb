@@ -27,9 +27,6 @@ class BoardsController < ApplicationController
     end
   end
 
-  def edit
-  end
-  
   def destroy
     @board.destroy
     flash[:success] = '投稿が削除されました'
