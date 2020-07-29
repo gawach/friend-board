@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_102621) do
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_parties_on_board_id"
     t.index ["join_id"], name: "index_parties_on_join_id"
-    t.index ["join_id"], name: "index_parties_on_user_id_and_join_id", unique: true
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

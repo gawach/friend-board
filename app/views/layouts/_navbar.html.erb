@@ -5,14 +5,14 @@
       <%= link_to 'ホームへ', root_url, class: 'nav-link text-white' %>
     </div>
     
+    
     <div class="navbar nav-item collapse navbar-collapse justify-content-end">
       <div class="navbar nav-item dropdown">
         <div class="nav-link dropdown-toggle text-white", data-toggle="dropdown">ゲームタイトル一覧</div>
         <div class="dropdown-menu">
-          <% apex = Game.find_by(id: 1) %>
-          <%= link_to 'Apex Legends', game_boards_path(apex), class: 'dropdown-item' %>
-          <% r6s = Game.find_by(id: 4) %>
-          <%= link_to 'Rainbow Six Siege', game_boards_path(r6s), class: 'dropdown-item' %>
+          <% Game.all.each do |game| %>
+            <%= link_to game.title, game_boards_path(game), class: 'dropdown-item' %>
+          <% end %>
         </div>
       </div>
     
@@ -23,8 +23,10 @@
               <%= current_user.name %>
             </div>
             <div class="dropdown-menu dropdown-menu-right">
+              <% if current_user && current_user.admin? %>
+                <%= link_to 'ユーザー一覧', users_path, class: 'dropdown-item' %>
+              <% end %>
               <%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %>
-              <%= link_to 'ユーザー一覧', users_path, class: 'dropdown-item' %>
               <%= link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </li>

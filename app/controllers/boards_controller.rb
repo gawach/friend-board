@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
   before_action :require_user_logged_in, only: [:show, :new, :create, :destroy]
   
   def index
-    @boards = Board.all
+    @boards = Board.order(id: :desc).page(params[:page]).per(10)
     @game = Game.find(params[:game_id])
   end
 
