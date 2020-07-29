@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
     
     if @profile.save
       flash[:success] = 'プロフィールを作成しました'
-      redirect_to user_profiles_path
+      redirect_to user_path(current_user)
     else
       flash.now[:danger] = 'プロフィールの作成に失敗しました'
       render :new
@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
   def destroy
     @profile.destroy
     flash.now[:danger] = 'プロフィールを削除しました'
-    redirect_to user_profiles_path
+    redirect_to user_path(current_user)
   end
   
   private
