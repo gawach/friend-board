@@ -9,7 +9,7 @@ docker-compose exec friend-board-web rake db:seed
 ## URL 「http:localhost:3000」
 
 
-## Test user list
+## Default Login User List
 
 | Email | password |
 ----|----
