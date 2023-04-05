@@ -1,7 +1,7 @@
 ## setup commands↓
 ```
 git clone [This Project URI]
-dowcker-compose up -d
+docker-compose up -d
 docker-compose exec friend-board-web rake db:migrate
 docker-compose exec friend-board-web rake db:seed
 ```
