@@ -1,0 +1,26 @@
+default: &default
+  adapter: mysql2
+  charset: utf8mb4
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: password
+  host: friend-board-db
+
+development:
+  <<: *default
+  database: development_db
+
+test:
+  <<: *default
+  database: test_db
+
+production:
+  <<: *default
+  adapter: postgresql
+  charset: unicode
+  encoding: unicode
+  pool: 5
+  database: production_db
+  username: friend-board
+  password: <%= ENV['FRIEND-BOARD_DATABASE_PASSWORD'] %>
